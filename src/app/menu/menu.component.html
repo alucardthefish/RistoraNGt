@@ -18,8 +18,9 @@
     </mat-grid-list>
   </div>
 
-  <div fxFlex *ngIf="selectedDish">
-    <mat-card>
+  <div fxFlex *ngIf="selectedDish"> <!-- *ngIf="selectedDish" -->
+    <app-dishdetail></app-dishdetail>
+    <!-- <mat-card>
       <mat-card-header>
         <mat-card-title>
           <h3>{{selectedDish.name | uppercase}}</h3>
@@ -34,7 +35,7 @@
         <button mat-button>LIKE</button>
         <button mat-button>SHARE</button>
       </mat-card-actions>
-    </mat-card>
+    </mat-card> -->
   </div>
 
   
