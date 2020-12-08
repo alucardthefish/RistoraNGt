@@ -33,4 +33,9 @@ body {
 .active {
     background: #4527A0;
 }
+
+.leader-item {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
   
