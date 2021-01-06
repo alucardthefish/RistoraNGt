@@ -88,6 +88,7 @@ export class DishdetailComponent implements OnInit {
     comment: Comment;
 
     errMess: string;
+    dishCopy: Dish;
     
     constructor(private dishservice: DishService,
         private route: ActivatedRoute,
@@ -99,8 +100,9 @@ export class DishdetailComponent implements OnInit {
 
     ngOnInit() {
         this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
-        this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-        .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
+        this.route.params
+         .pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
+         .subscribe(dish => { this.dish = dish; this.dishCopy = dish; this.setPrevNext(dish.id); },
           errmess => this.errMess = <any>errmess);
     }
 
@@ -149,7 +151,14 @@ export class DishdetailComponent implements OnInit {
         this.comment = this.commentForm.value;
         var spc = this.comment;
         spc.date = new Date().toISOString();
-        this.dish.comments.push(spc);
+
+        this.dishCopy.comments.push(this.comment);
+        this.dishservice.putDish(this.dishCopy)
+         .subscribe(dish => {
+           this.dish = dish; this.dishCopy = dish;
+         }, 
+         errmess => {this.dish = null; this.dishCopy = null; this.errMess = <any>errmess; });
+
         this.commentForm.reset({
           author: '',
           rating: 5,
