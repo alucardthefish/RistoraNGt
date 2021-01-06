@@ -87,9 +87,7 @@ export class DishdetailComponent implements OnInit {
     commentForm: FormGroup;
     comment: Comment;
 
-    //author = new FormControl('')
-    //comment = new FormControl('');
-    //rating = new FormControl(5);
+    errMess: string;
     
     constructor(private dishservice: DishService,
         private route: ActivatedRoute,
@@ -102,7 +100,8 @@ export class DishdetailComponent implements OnInit {
     ngOnInit() {
         this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
         this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-        .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+        .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
+          errmess => this.errMess = <any>errmess);
     }
 
     goBack(): void {
