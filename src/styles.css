@@ -50,3 +50,10 @@ body {
 .form-size {
     width: 75%
 }
+
+.highlight {
+    background-color: #512DA8;
+    border: 1px solid black;
+    z-index: 1;
+    transform: scale(1.01);
+}
