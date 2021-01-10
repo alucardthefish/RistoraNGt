@@ -52,8 +52,8 @@ body {
 }
 
 .highlight {
-    background-color: #512DA8;
-    border: 1px solid black;
+    background-color: #dccefc;
+    border: 1px solid rgb(74, 18, 228);
     z-index: 1;
     transform: scale(1.01);
 }
