@@ -79,7 +79,7 @@
               <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
             </mat-form-field>
           </p>
-          <mat-slider matInput formControlName="rating" min="1" max="5" thumbLabel tickInterval="5" step="1"></mat-slider>
+          <mat-slider matInput formControlName="rating" min="1" max="5" thumbLabel tickInterval="1" step="1"></mat-slider>
           <p>
             <mat-form-field class="full-width">
               <textarea matInput formControlName="comment" placeholder="Your Comment" rows="12"></textarea>
